@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest
+    xmlns:tools="http://schemas.android.com/tools" 
+    xmlns:android="http://schemas.android.com/apk/res/android" package="com.htc.android.example"
+	android:versionName="5.00">
+    <meta-data android:name="HDK_Lib0_API19_1" android:value="19.1.372540" />
+    <meta-data android:name="HDK_Lib1_API20_Sense70_Stable" android:value="21.Sense70.458466" />
+    <meta-data android:name="HDK_Lib3_API19_2_Stable" android:value="19.2.372867" />
+    
+    <!-- only for L50 && Sense7.0 and above or Sense(n) GP (Aero) -->
+    <uses-feature android:name="com.htc.software.IHSense"/>
+
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true" />
+    
+    <skip-erased />
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
+    <uses-permission android:name="com.htc.task" />
+    <uses-permission android:name="android.permission.MASTER_CLEAR" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.GET_TASKS"/> 
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+<!--    <uses-permission android:name="android.webkit.permission.LOAD_FROM_LOCAL_FILE" />-->
+<!--    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>-->
+<!--    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- ** For accessing GoogleSync settings ** -->
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    
+    <!-- ** For Secondary Storage settings **  -->
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"/> <!-- enforce added starting in API level 19 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- enforce added starting in API level 19 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- enforce added starting in API level 19 -->
+    <uses-permission android:name="android.permission.BACKUP" />
+   
+    <!-- ** For ICS Telephony service/receiver ** -->
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+
+    <!-- for get USB plug / unplug status change, intent com.htc.system.battery.PLUG_CHANGED -->
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    
+    <!-- MDM create account -->
+    <uses-permission android:name="com.htc.framework.permission.DPM_INTERNAL_OPERATION" />
+    <!-- use to call ConnectivityManager.startUsingNetworkFeature() -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- download without notification -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    
+    <uses-permission android:name="com.htc.lockscreen.permission.RECOVERY_PASSWORD_OPERATION" />                      
+                            
+    <!-- htc.pluginmanager.permission.USE_PROVIDER will be phased out, change to use APP_HSP new permission -->
+    <uses-permission android:name="com.htc.sense.permission.APP_HSP" />
+    
+    <uses-permission android:name="com.htc.vvm.READ_VVM" />
+    
+    <!-- Use FilePicker -->
+    <uses-permission android:name="com.htc.FilePicker.permission.INTENT_TOKEN" />
+    
+    <!-- Use HTC IME Provider -->
+    <uses-permission android:name="com.htc.permission.ACCESS_HTCIME_DATA" />
+    
+    <!-- Use SMS Restore -->
+    <uses-permission android:name="com.android.mms.permission.RESTORE_SMS" />
+
+    <!-- Use Drawing Board -->
+    <uses-permission android:name="com.htc.drawingboard.permission.DRAW_CROP" />
+    
+    <!-- Use HMS Gallery -->
+    <uses-permission android:name="com.htc.sense.permission.album.GENERAL" />
+    
+    <!-- Use Save Alert Windows -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    
+    <!-- for Sense5+ use LocationPicker -->
+    <uses-permission android:name="com.htc.android.locationpicker.permission.PICK_LOCATION" />
+    <uses-permission android:name="com.htc.android.locationpicker.permission.LAPUTA_MAP" />
+    
+    <!-- for hTC Security Policy, add 4 default permissions -->
+    <uses-permission android:name="com.htc.permission.APP_PLATFORM"/>
+    <uses-permission android:name="com.htc.permission.APP_SHARED"/>
+    <uses-permission android:name="com.htc.permission.APP_MEDIA"/>
+    <uses-permission android:name="com.htc.permission.APP_DEFAULT"/>
+ 
+    <!-- add permission to use com.htc.dnstransfer.public provider -->
+    <uses-permission android:name="com.htc.dnatransfer.permission.ACCESS_PROVIDER"/>
+    
+    <application
+        tools:replace="icon, label"
+        android:icon="@drawable/icon_btn_email_light"
+        android:label="@string/app" 
+        android:allowClearUserData="true"
+        configuredExt1="195"
+        android:restoreAnyVersion="true">
+        
+        <activity android:name="Activity1"
+            android:launchMode="singleTop"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|fontScale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="Activity2"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|fontScale"
+            android:exported="false" >
+        </activity>
+        
+        <activity android:name=".activity.permission.RequestPermissionsActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|fontScale"
+            android:exported="false" >
+        </activity>
+              
+       <activity android:name=".activity.permission.RequestBkgPermissionsActivity"
+            android:launchMode="singleTask"  
+            android:taskAffinity="com.htc.android.example.second"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|fontScale"
+            android:exported="false" >
+       </activity>
+       
+        <service android:name=".service.ReqeustIntentService"
+            android:process=":sync"
+            android:exported="false">
+        </service>
+        
+    </application>
+</manifest>

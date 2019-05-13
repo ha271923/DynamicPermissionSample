@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        jcenter()
+         maven{ url "http://prebuild-repositories.htc.com.tw:8081/artifactory/HTC-release"}
+    }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'SECONDS'
+        resolutionStrategy.cacheChangingModulesFor 0, 'SECONDS'
+    }
+    dependencies {
+         classpath "com.android.tools.build:gradle:2.0.0"
+         classpath "com.htc.plugin:htcgradleplugin:1.0.+"
+    }
+}
+
+allprojects {
+    apply from: "${project.rootDir}/common.gradle"
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'SECONDS'
+        resolutionStrategy.cacheChangingModulesFor 0, 'SECONDS'
+    }
+    repositories {
+        jcenter()
+        mavenServer.each{ urls-> maven{ url urls.value.toString() } }
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'htcgradleplugin'
+
+def extraLibraryFile = new File("${project.projectDir}/extraLibraries.gradle")
+if(extraLibraryFile.exists()){
+    apply from: "${project.projectDir}/extraLibraries.gradle"
+}
+
+dependencies {
+    //compile fileTree(dir: "libs", include: "*.jar") //libs is abandoned, pls upload jar to maven server if need
+
+    if (extraLibraryFile.exists()){
+        extraLibrary.each{compile it}
+    }
+}
+
+android {
+    // useLibrary "org.apache.http.legacy"
+    compileSdkVersion "${project.ext.sdkVersion}"
+    buildToolsVersion "${project.ext.toolVersion}"
+
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("/home/menghan/.android/hms.import")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguard.each{proguardFile file(it)}
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile "AndroidManifest.xml"
+            java.srcDirs = ["src"]
+            jniLibs.srcDirs = ["libs"]
+            resources.srcDirs = ["src"]
+            aidl.srcDirs = ["src"]
+            renderscript.srcDirs = ["src"]
+            res.srcDirs = ["res"]
+            assets.srcDirs = ["assets"]
+        }
+    }
+
+    dexOptions {
+        jumboMode = true
+        javaMaxHeapSize "2g"
+    }
+}

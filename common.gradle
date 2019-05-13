@@ -1,0 +1,11 @@
+ext {
+    sdkVersion = 'android-26'
+    toolVersion = "26.0.2"
+
+    mavenServer = [
+        "http://prebuild-repositories.htc.com.tw:8081/artifactory/HTC-release",
+        "http://prebuild-repositories.htc.com.tw:8081/artifactory/HDK-release"
+    ]
+
+    proguard = ["proguard-allmodules.txt", "proguard-project.txt"]
+}
